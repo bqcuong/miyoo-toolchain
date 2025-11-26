@@ -5,8 +5,11 @@ ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
-  build-essential wget ca-certificates git \
-  && rm -rf /var/lib/apt/lists/*
+        build-essential \
+        autoconf cmake \
+        wget ca-certificates \
+        git vim \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
 

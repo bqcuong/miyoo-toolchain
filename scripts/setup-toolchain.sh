@@ -4,9 +4,9 @@ TOOLCHAIN_VERSION=v0.0.1
 
 TOOLCHAIN_ARCH=`uname -m`
 if [ "$TOOLCHAIN_ARCH" = "aarch64" ]; then
-    TOOLCHAIN_TAR="miyoo-toolchain-buildroot.tar.xz"
-else
     TOOLCHAIN_TAR="miyoo-toolchain-buildroot-aarch64.tar.xz"
+else
+    TOOLCHAIN_TAR="miyoo-toolchain-buildroot.tar.xz"
 fi
 
 cd /opt
