@@ -1,36 +1,21 @@
 FROM ubuntu:24.04
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 ENV TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get -y update && apt-get -y install \
-	bc \
-	build-essential \
-	bzip2 \
-	bzr \
-	cmake \
-	cmake-curses-gui \
-	cpio \
-	git \
-	libncurses5-dev \
-	make \
-	rsync \
-	scons \
-	tree \
-	unzip \
-	wget \
-	zip \
+RUN apt-get -y update && apt-get -y install --no-install-recommends \
+  build-essential wget ca-certificates git \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /root/workspace
 WORKDIR /root
 
-COPY support .
+COPY scripts .
 RUN ./setup-toolchain.sh
-RUN cat setup-env.sh >> .bashrc
 
-VOLUME /root/workspace
-WORKDIR /root/workspace
+ENV UNION_PLATFORM=miyoo
+ENV CROSS_COMPILE=/opt/miyoo-toolchain/usr/bin/arm-linux-gnueabihf-
+ENV PREFIX=/opt/miyoo-toolchain/usr/arm-linux-gnueabihf/sysroot/usr
+ENV PATH=/opt/miyoo-toolchain/usr/bin:/opt/miyoo-toolchain/usr/arm-linux-gnueabihf/sysroot/bin:$PATH
 
 CMD ["/bin/bash"]
