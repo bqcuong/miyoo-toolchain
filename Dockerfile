@@ -11,7 +11,7 @@ RUN apt-get -y update && apt-get -y install --no-install-recommends \
 WORKDIR /root
 
 COPY scripts .
-RUN ./setup-toolchain.sh
+RUN ./setup-toolchain.sh && rm ./setup-toolchain.sh
 
 ENV UNION_PLATFORM=miyoo
 ENV CROSS_COMPILE=/opt/miyoo-toolchain/usr/bin/arm-linux-gnueabihf-
