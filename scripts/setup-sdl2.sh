@@ -5,12 +5,6 @@
 cd /root/workspace/
 
 # We need this special toolchain only for building this custom SDL2 (containing X11 libs, etc.)
-wget https://github.com/steward-fu/website/releases/download/miyoo-mini/mini_toolchain-v1.0.tar.gz
-
-tar xvf mini_toolchain-v1.0.tar.gz
-mv mini prebuilt /opt 
-rm -rf mini_toolchain-v1.0.tar.gz
-
 export PATH=/opt/mini/bin:$PATH
 
 git clone https://github.com/steward-fu/sdl2.git
@@ -24,5 +18,5 @@ mkdir ../sdl2_build
 cp swiftshader/build/lib* sdl2/build/.libs/libSDL2-2.0.so.0* ../sdl2_build
 
 # also copy the dependency libs for SDL2
-mkdir ../sdl2_build/dependencies
-cp examples/libSDL2_* examples/libjson-c.so.5 examples/libpng16.so.16 ../sdl2_build/dependencies/
+#mkdir ../sdl2_build/dependencies
+#cp examples/libSDL2_* examples/libjson-c.so.5 examples/libpng16.so.16 ../sdl2_build/dependencies/
