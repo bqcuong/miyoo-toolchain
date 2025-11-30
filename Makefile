@@ -13,10 +13,10 @@ buildroot-docker: buildroot.Dockerfile
 docker: toolchain.Dockerfile
 	docker build -t $(TOOLCHAIN_IMAGE) -f toolchain.Dockerfile .
 
-shell: docker
+shell:
 	docker run -it -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) /bin/bash
 
-setup-sdl2: docker
+setup-sdl2:
 	cp scripts/setup-sdl2.sh $(HOST_WORKSPACE)
 	docker run -it --rm -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) $(GUEST_WORKSPACE)/setup-sdl2.sh
 
