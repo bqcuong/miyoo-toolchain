@@ -4,9 +4,6 @@
 
 cd /root/workspace/
 
-# We need this special toolchain only for building this custom SDL2 (containing X11 libs, etc.)
-export PATH=/opt/mini/bin:$PATH
-
 git clone https://github.com/steward-fu/sdl2.git
 cd sdl2
 
