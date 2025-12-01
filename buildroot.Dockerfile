@@ -26,7 +26,7 @@ RUN mv buildroot/output/host/opt/ext-toolchain /opt/miyoo-toolchain
 WORKDIR /opt/miyoo-toolchain
 
 RUN ln -s . ./usr && ln -s libc ./arm-none-linux-gnueabihf/sysroot
-RUN rsync -a --ignore-existing /root/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot ./arm-none-linux-gnueabihf/sysroot
+RUN rsync -a --ignore-existing /root/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/* ./arm-none-linux-gnueabihf/sysroot
 RUN rsync -a --ignore-existing /root/buildroot-scripts/my354/* ./arm-none-linux-gnueabihf/sysroot/usr
 
 RUN rm -rf /root/buildroot
