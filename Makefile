@@ -16,9 +16,5 @@ docker: toolchain.Dockerfile
 shell:
 	docker run -it -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) /bin/bash
 
-setup-sdl2:
-	cp scripts/setup-sdl2.sh $(HOST_WORKSPACE)
-	docker run -it --rm -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) $(GUEST_WORKSPACE)/setup-sdl2.sh
-
 clean:
 	docker rmi $(TOOLCHAIN_IMAGE)
