@@ -17,7 +17,7 @@ WORKDIR /root
 COPY scripts ./scripts
 RUN ./scripts/setup-sdl2.sh
 
-ENV CROSS=/opt/miyoo-toolchain/usr/bin/arm-none-linux-gnueabihf-
+ENV CROSS=/opt/miyoo-toolchain/usr/bin/arm-linux-gnueabihf-
 ENV PATH=/opt/miyoo-toolchain/bin:$PATH
 
 CMD ["/bin/bash"]

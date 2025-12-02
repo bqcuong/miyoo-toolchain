@@ -14,7 +14,7 @@ docker: toolchain.Dockerfile
 	docker build -t $(TOOLCHAIN_IMAGE) -f toolchain.Dockerfile .
 
 shell:
-	docker run -it -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) /bin/bash
+	docker run --rm -it -v $(HOST_WORKSPACE):$(GUEST_WORKSPACE) $(TOOLCHAIN_IMAGE) /bin/bash
 
 clean:
 	docker rmi $(TOOLCHAIN_IMAGE)
